@@ -1,0 +1,30 @@
+{
+  "total": 5,
+  "lista": [
+    {
+      "nombre": "Juan Perez",
+      "Sexo": "M",
+      "email": "juan.perez@example.com"
+    },
+    {
+      "nombre": "Maria Gomez",
+      "Sexo": "F",
+      "email": "maria.gomez@example.com"
+    },
+    {
+      "nombre": "Pedro Martinez",
+      "Sexo": "M",
+      "email": "pedro.martinez@example.com"
+    },
+    {
+      "nombre": "Ana Torres",
+      "Sexo": "F",
+      "email": "ana.torres@example.com"
+    },
+    {
+      "nombre": "Luis Fernandez",
+      "Sexo": "M",
+      "email": "luis.fernandez@example.com"
+    }
+  ]
+}
