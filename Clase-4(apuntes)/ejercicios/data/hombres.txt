@@ -1,0 +1,16 @@
+
+{
+  "nombre": "Juan Perez",
+  "Sexo": "M",
+  "email": "juan.perez@example.com"
+}
+{
+  "nombre": "Pedro Martinez",
+  "Sexo": "M",
+  "email": "pedro.martinez@example.com"
+}
+{
+  "nombre": "Luis Fernandez",
+  "Sexo": "M",
+  "email": "luis.fernandez@example.com"
+}

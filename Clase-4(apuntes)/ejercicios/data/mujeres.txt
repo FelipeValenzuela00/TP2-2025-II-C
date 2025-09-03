@@ -1,0 +1,11 @@
+
+{
+  "nombre": "Maria Gomez",
+  "Sexo": "F",
+  "email": "maria.gomez@example.com"
+}
+{
+  "nombre": "Ana Torres",
+  "Sexo": "F",
+  "email": "ana.torres@example.com"
+}
