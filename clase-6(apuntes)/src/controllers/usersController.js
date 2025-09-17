@@ -1,6 +1,8 @@
 import { users } from '../data/users.js';
 
-const getAlumnos = (req, res) => {
+
+export const getUsers = (req, res) => {
+
     if (req.query.id) {
 
         let id = Number(req.query.id)
