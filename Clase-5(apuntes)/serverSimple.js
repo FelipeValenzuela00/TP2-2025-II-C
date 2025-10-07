@@ -1,11 +1,12 @@
 const http = require("http");
 
-console.log("http:", http)
-const port = 3000;
+console.log("http server", http);
 
+const PORT = 3000;
 http.createServer((req, res) => {
-    res.write("Hola mundo");
+    res.write("Hola mundo desde mi servidor con Node.js");
     res.end();
-}).listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`);
-});   
+
+}).listen(PORT, () => {
+    console.log("Servidor corriendo en http://localhost:", PORT);
+});

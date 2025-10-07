@@ -1,30 +1,37 @@
-const http = require("http");
+const http = require('http')
 
-console.log("http:", http)
-const port = 3000;
-
+const PORT = 3000
 
 const alumnos = [
-    { id: 1, nombre: "Juan Perez", edad: 20 },
-    { id: 2, nombre: "Maria Gomez", edad: 22 },
+    {
+        nombre: 'Augusto',
+        edad: 28,
+    },
+    {
+        nombre: 'Pedro',
+        edad: 35,
+    },
 ]
 
 http.createServer((req, res) => {
 
     if (req.url === "/") {
-        res.writeHead(201,);
-        res.write("hola");
+        res.writeHead(200, { "Content-Type": 'text/html' })
+        res.write("<h1>Home de la API</h1>")
+    } else if (req.url === "/api/alumnos") {
 
-
-
-    } else if (req.url === "/alumnos") {
-        res.writeHead(200,);
-        res.write(JSON.stringify(alumnos));
+        res.writeHead(200, { "Content-Type": "application/json" })
+        res.write(JSON.stringify(alumnos))
     } else {
-        res.writeHead(404);
-        res.write("No encontrado");
+        res.writeHead(404, { "Content-Type": 'text/plain' })
+        res.write("Ruta no encontrada")
     }
-    res.end();
-}).listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`);
-});   
+
+
+    res.end()
+
+}
+).listen(PORT, () => {
+    console.log("Servidor corriendo en http://localhost:", PORT);
+
+})
