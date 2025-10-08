@@ -1,46 +1,57 @@
 import { users } from "../data/users.js";
+import User from "../models/User.js";
+import mongoose from "mongoose";
+
+export const getUsers = async (req, res) => {
 
 
-export const getUsers = (req, res) => {
+    try {
+        const user = await User.find()
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los usuarios' });
+    }
+}
 
-    if (req.query.id) {
+export const getUsersSearch = async (req, res) => {
 
-        let id = Number(req.query.id)
 
-        const user = users.find((user) => {
-            console.log("user: ", user.id);
-            console.log("id params: ", id);
-            console.log("===", user.id === id);
-            console.log("==", user.id == id);
+    const { nombre } = req.query;
 
-            return user.id === id
+    try {
+        const user = await User.find({
+            nombre: {
+                $regex: `^${nombre}`,
+                $options: 'i'
+            }
         })
-
-        if (user) {
-            res.json(user)
-        } else {
-
-            res.status(404).json({
-                id: 0,
-                error: 'user no existe'
-            })
-        }
-    } else {
-        res.status(400).json({
-            error: "Falta ID"
-        })
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los usuarios' });
     }
 
 }
 
-export const CreateUser = (req, res) => {
+export const CreateUser = async (req, res) => {
 
     console.log(req.body);
 
-    const nuevoUser = req.body;
+    if (!req.body.nombre && !req.body.edad && !req.body.email && !req.body.password) {
+        return res.status(400).json({ error: 'Faltan datos' });
+    }
 
+    const nuevoUser = {
+        nombre: req.body.nombre,
+        edad: req.body.edad,
+        email: req.body.email,
+        password: req.body.password
+    };
+    try {
+        const nuevoUsuario = await User.create(nuevoUser);
+        res.status(201).json(nuevoUsuario);
+    } catch (error) {
 
-    users.push(nuevoUser);
+        res.status(500).json({ error: 'Error al crear el usuario' });
+    }
 
-    res.status(201).json(users);
 };

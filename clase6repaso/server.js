@@ -6,8 +6,16 @@ import { products } from '../Clase-6/src/data/products.js';
 import userRoutes from './src/routes/userRoutes.js';
 import productRoutes from './src/routes/productRoutes.js';
 
-const PORT = 3000;
+import dotenv from 'dotenv';
+import conectarDB from './src/config/db.js';
+
+dotenv.config();
+
 const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+conectarDB();
 
 app.use(express.json());
 
